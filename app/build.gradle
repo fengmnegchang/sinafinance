@@ -1,0 +1,143 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.getkeepsafe.dexcount'//在项目build.gardle中配置代码
+
+def keystoreFilepath = ''
+def keystorePSW = ''
+def keystoreAlias = ''
+def keystoreAliasPSW = ''
+// default keystore file, PLZ config file path in local.properties
+def keyfile = file('s.keystore.temp')
+
+Properties properties = new Properties()
+// local.properties file in the root director
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+keystoreFilepath = properties.getProperty("keystore.path")
+
+if (keystoreFilepath) {
+    keystorePSW = properties.getProperty("keystore.password")
+    keystoreAlias = properties.getProperty("keystore.alias")
+    keystoreAliasPSW = properties.getProperty("keystore.alias_password")
+    keyfile = file(keystoreFilepath)
+}
+
+
+android {
+    //签名信息
+    signingConfigs {
+        release {
+            keyAlias keystoreAlias
+            keyPassword keystoreAliasPSW
+            storeFile keyfile
+            storePassword keystorePSW
+        }
+    }
+    compileSdkVersion 26
+    buildToolsVersion "27.0.3"
+    defaultConfig {
+        applicationId "com.open.sina.finance"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        // 设置MultiDex可用
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            // zipAlignEnabled true     //Zipalign优化
+            // shrinkResources true    // 移除无用的resource文件
+            minifyEnabled true     //混淆
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            //签名文件存在，则签名
+            if (keyfile.exists()) {
+                signingConfig signingConfigs.release
+            }
+
+            // 自定义输出配置
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        // 输出apk名称为shanlinjinrong_otc_v1.0_wandoujia.apk
+                        def fileName = "shanlinjinrong_otc_v${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+                }
+            }
+        }
+    }
+    // 保证其他的lib没有被preDex
+    dexOptions {
+        preDexLibraries = false
+    }
+    //多渠道打包
+    productFlavors {
+        //官网
+        shanlinotc {}
+        kuan {}
+        xiaomi {}
+        qh360 {}
+        baidu {}
+        wandoujia {}
+        // productFlavors是为了避免每次运行都把DEX重新加载一遍而设置的两套运行配置
+        dev {
+            minSdkVersion 21
+        }
+        prod {
+            minSdkVersion 14
+        }
+    }
+
+    //umeng channel
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+
+    dexcount {
+        format = "list"
+        includeClasses = false
+        includeClassCount = false
+        includeFieldCount = true
+        includeTotalMethodCount = false
+        orderByMethodCount = false
+        verbose = false
+        maxTreeDepth = Integer.MAX_VALUE
+        teamCityIntegration = false
+        teamCitySlug = null
+        runOnEachPackage = true
+        maxMethodCount = 64000
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+
+    compile project(':okhttputils')
+    compile project(':xutilsdb')
+    compile project(':androidpulltorefresh')
+    compile project(':viewpagerindicator')
+    //compile project(':pickerviewlibrary')
+    compile 'com.google.code.gson:gson:2.3.1'
+    compile 'com.squareup.okhttp3:okhttp-urlconnection:3.2.0'
+    compile 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    //compile 'cn.yipianfengye.android:zxing-library:2.2'
+    //compile 'com.qianwen:update-app:3.3.8'
+    compile project(':updateapplibrary')
+   // compile project(':bubbleviewlibrary')
+
+    // MultiDex的依赖
+    compile 'com.android.support:multidex:1.0.0'
+    // LeakCanary
+    debugCompile  "com.squareup.leakcanary:leakcanary-android:1.5.4"
+    releaseCompile  "com.squareup.leakcanary:leakcanary-android-no-op:1.5.4"
+}

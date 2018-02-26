@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="red">#ff0000</color>
+    <color name="blue">#0000ff</color>
+    <color name="activity_bg">#f2f2f2</color>
+    <color name="status_bar_color">#333333</color>
+    <color name="main_tab_bg_color">#f8f8f8</color>
+    <color name="main_tab_div_color">#eeeeee</color>
+    <color name="main_tab_text_color">#999999</color>
+    <color name="app_blue_color">#36abe6</color>
+    <color name="blue_theme">#26a8e9</color>
+</resources>
