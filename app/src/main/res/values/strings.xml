@@ -3,4 +3,11 @@
     <string name="permission_rationale_message">拒绝权限申请会导致功能无法使用</string>
     <string name="permission_denied_forever_message">前往手动设置权限，否则功能无法使用</string>
     <string name="loading_dialog">加载中...</string>
+    <!--maintab-->
+    <string name="tab_main_news">新闻</string>
+    <string name="tab_main_market">行情</string>
+    <string name="tab_main_mystock">自选</string>
+    <string name="tab_main_live">直播</string>
+    <string name="tab_main_me">我的</string>
+
 </resources>

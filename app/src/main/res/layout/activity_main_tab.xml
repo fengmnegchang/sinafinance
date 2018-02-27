@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/status_bar_color"
+    >
+
+    <TabHost
+        android:id="@android:id/tabhost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp">
+
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="gone"/>
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"></FrameLayout>
+    </TabHost>
+    <!--<HorizontalScrollView-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:scrollbars="horizontal"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:background="#ffffff"-->
+    <!--&gt;-->
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shape_main_tab_bottom"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="2dp">
+
+
+        <RadioButton
+            android:id="@+id/radio_news"
+            style="@style/tab_child"
+            android:checked="true"
+            android:background="#00000000"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/selector_tab_news"
+            android:drawablePadding="3dp"
+            android:text="@string/tab_main_news" />
+
+        <RadioButton
+            android:id="@+id/radio_market"
+            style="@style/tab_child"
+            android:checked="false"
+            android:drawablePadding="3dp"
+            android:background="#00000000"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/selector_tab_market"
+            android:text="@string/tab_main_market" />
+
+        <RadioButton
+            android:id="@+id/radio_mystock"
+            style="@style/tab_child"
+            android:checked="false"
+            android:layout_weight="1"
+            android:background="#00000000"
+            android:drawablePadding="3dp"
+            android:drawableTop="@drawable/selector_tab_mystock"
+            android:text="@string/tab_main_mystock" />
+        <!--<RadioButton-->
+            <!--android:id="@+id/radio_msg"-->
+            <!--style="@style/tab_child"-->
+            <!--android:checked="false"-->
+            <!--android:drawablePadding="3dp"-->
+            <!--android:drawableTop="@drawable/selector_tab_wallet"-->
+            <!--android:text="@string/app_tab_msg" />-->
+        <RadioButton
+            android:id="@+id/radio_live"
+            style="@style/tab_child"
+            android:checked="false"
+            android:layout_weight="1"
+            android:drawablePadding="3dp"
+            android:background="#00000000"
+            android:drawableTop="@drawable/selector_tab_live"
+            android:text="@string/tab_main_live" />
+
+        <RadioButton
+            android:id="@+id/radio_me"
+            style="@style/tab_child"
+            android:checked="false"
+            android:layout_weight="1"
+            android:drawablePadding="3dp"
+            android:background="#00000000"
+            android:drawableTop="@drawable/selector_tab_me"
+            android:text="@string/tab_main_me" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
+        <TextView
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:id="@+id/txt_msg_count"
+            android:layout_marginBottom="40dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/shape_red__msg_button"
+            />
+    </LinearLayout>
+
+    <!--</HorizontalScrollView>-->
+</RelativeLayout>

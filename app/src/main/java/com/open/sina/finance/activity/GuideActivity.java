@@ -45,11 +45,11 @@ public class GuideActivity extends CommonTitleBarActivity {
     @Override
     public void initValue() {
         super.initValue();
-        list.add(new MainTabBean(getResources().getIdentifier("bg_guide0", "drawable", getPackageName()),""));
-        list.add(new MainTabBean(getResources().getIdentifier("bg_guide1", "drawable", getPackageName()),""));
-        list.add(new MainTabBean(getResources().getIdentifier("bg_guide2", "drawable", getPackageName()),""));
-        list.add(new MainTabBean(getResources().getIdentifier("bg_guide3", "drawable", getPackageName()),""));
-        mGuideViewPagerAdapter = new GuideViewPagerAdapter(this,list);
+        list.add(new MainTabBean(getResources().getIdentifier("bg_guide0", "drawable", getPackageName()), ""));
+        list.add(new MainTabBean(getResources().getIdentifier("bg_guide1", "drawable", getPackageName()), ""));
+        list.add(new MainTabBean(getResources().getIdentifier("bg_guide2", "drawable", getPackageName()), ""));
+        list.add(new MainTabBean(getResources().getIdentifier("bg_guide3", "drawable", getPackageName()), ""));
+        mGuideViewPagerAdapter = new GuideViewPagerAdapter(this, list);
         viewpager.setAdapter(mGuideViewPagerAdapter);
         mGuideViewPagerAdapter.notifyDataSetChanged();
     }
@@ -65,7 +65,12 @@ public class GuideActivity extends CommonTitleBarActivity {
 
             @Override
             public void onPageSelected(int position) {
-
+                if (position == 3) {
+                    list.get(position).isEnd = true;
+                }else {
+                    list.get(position).isEnd = false;
+                }
+                mGuideViewPagerAdapter.notifyDataSetChanged();
             }
 
             @Override

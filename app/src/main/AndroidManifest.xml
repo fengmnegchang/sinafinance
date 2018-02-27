@@ -47,6 +47,17 @@
         <activity android:name=".activity.GuideActivity"
             android:configChanges="keyboard|keyboardHidden|navigation"
             />
+        <!--主tab页面-->
+        <activity
+            android:name=".activity.MainTabActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.PageIndicatorDefaults"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
+            >
+        </activity>
 
     </application>
 

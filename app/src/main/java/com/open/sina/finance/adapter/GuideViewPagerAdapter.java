@@ -1,14 +1,17 @@
 package com.open.sina.finance.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.open.sina.finance.R;
+import com.open.sina.finance.activity.MainTabActivity;
 import com.open.sina.finance.base.adapter.CommonPagerAdapter;
 import com.open.sina.finance.bean.MainTabBean;
+import com.open.sina.finance.utils.ActivityUtils;
 
 import java.util.List;
 
@@ -34,11 +37,19 @@ public class GuideViewPagerAdapter extends CommonPagerAdapter<MainTabBean> {
         final ViewHolder mViewHolder = new ViewHolder();
         View convertView = LayoutInflater.from(mContext).inflate(R.layout.adapter_dot_viewpager, null);
         mViewHolder.draweeview = (ImageView) convertView.findViewById(R.id.draweeview);
+        mViewHolder.img_tomain = (ImageView) convertView.findViewById(R.id.img_tomain);
         if (bean != null) {
             mViewHolder.draweeview.setImageResource(bean.resId);
-            convertView.setOnClickListener(new View.OnClickListener() {
+            if (bean.isEnd){
+                mViewHolder.img_tomain.setVisibility(View.VISIBLE);
+            }else {
+                mViewHolder.img_tomain.setVisibility(View.GONE);
+            }
+            mViewHolder.img_tomain.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //to maintab
+                    ActivityUtils.startActivity(MainTabActivity.class);
                 }
             });
         }
@@ -47,6 +58,6 @@ public class GuideViewPagerAdapter extends CommonPagerAdapter<MainTabBean> {
     }
 
     private class ViewHolder {
-        ImageView draweeview;
+        ImageView draweeview,img_tomain;
     }
 }

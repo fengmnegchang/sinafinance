@@ -15,4 +15,5 @@
     <color name="main_tab_text_color">#999999</color>
     <color name="app_blue_color">#36abe6</color>
     <color name="blue_theme">#26a8e9</color>
+    <color name="red_msg_color">#f84141</color>
 </resources>

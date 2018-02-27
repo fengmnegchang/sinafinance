@@ -14,6 +14,7 @@ package com.open.sina.finance.bean;
 public class MainTabBean extends CommonBean{
     public int resId;
     public String tabName;
+    public boolean isEnd;
 
 
     public MainTabBean(int resId, String tabName) {
