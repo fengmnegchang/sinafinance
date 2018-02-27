@@ -7,6 +7,7 @@ import android.os.Message;
 import com.open.sina.finance.R;
 import com.open.sina.finance.base.MessageHandler;
 import com.open.sina.finance.base.activity.CommonTitleBarActivity;
+import com.open.sina.finance.utils.SPUtils;
 
 public class SplashActivity extends CommonTitleBarActivity {
     private static final int SHOW_TIME_MIN = 3000;// 最小显示时间
@@ -83,7 +84,12 @@ public class SplashActivity extends CommonTitleBarActivity {
  */
     public void goToStart() {
         // TODO Auto-generated method stub
-        startActivity(new Intent(this, GuideActivity.class));
+        if (SPUtils.getIsFirst()){
+            SPUtils.setIsFirst(false);
+            startActivity(new Intent(this, GuideActivity.class));
+        }else {
+            startActivity(new Intent(this, MainTabActivity.class));
+        }
         finish();
     }
 }
