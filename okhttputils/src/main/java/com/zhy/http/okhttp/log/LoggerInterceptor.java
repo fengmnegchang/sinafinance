@@ -79,7 +79,7 @@ public class LoggerInterceptor implements Interceptor {
 
            e(tag, "========response'log=======end");
         } catch (Exception e) {
-//            e.printStackTrace();
+            e.printStackTrace();
         }
 
         return response;

@@ -110,6 +110,12 @@ android {
         runOnEachPackage = true
         maxMethodCount = 64000
     }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
 
 dependencies {

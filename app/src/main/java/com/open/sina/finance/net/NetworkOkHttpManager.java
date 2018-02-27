@@ -36,17 +36,14 @@ public class NetworkOkHttpManager {
 
 
     /***
-     * 注册 校验用户名是否存在
+     *
      * @param tag
-     * @param username 用户名
      * @param mGenericsCallback
-     * {"result":"200","msg":"Success","data":false}
      */
-    public static void isUserNameExisted(Object tag, String username, GenericsCallback mGenericsCallback) {
+    public static void newsWap(Object tag, GenericsCallback mGenericsCallback) {
         Map<String, String> params = new HashMap<>();
-        params.put("username", username);
 
-        postString(tag, RequestBuilderID.ISUSERNAMEEXISTED_ID, RequestCollection.ISUSERNAMEEXISTED, params, mGenericsCallback);
+        postString(tag, RequestBuilderID.WAP_ID, RequestCollection.NEWS_CALLBACK, params, mGenericsCallback);
     }
 
 

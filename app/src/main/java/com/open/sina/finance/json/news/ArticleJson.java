@@ -1,20 +1,20 @@
-package com.open.sina.finance.net;
+package com.open.sina.finance.json.news;
+
+import com.open.sina.finance.bean.news.ArticleBean;
+import com.open.sina.finance.json.CommonDataJson;
+
+import java.util.List;
 
 /**
  * ****************************************************************************************************************************************************************************
- * okhttp网络请求序列id
  *
  * @author :fgj
- * @createTime: 2018/1/11.
+ * @createTime: 2018/2/27.
  * @version:1.0.0
  * @modifyTime:
  * @modifyAuthor:
  * @description: ****************************************************************************************************************************************************************************
  */
 
-public class RequestBuilderID {
-
-
-    public static final int WAP_ID =0x1000;
-
+public class ArticleJson extends CommonDataJson<List<ArticleBean>> {
 }

@@ -32,6 +32,7 @@ public abstract class BaseFragment<F extends BaseFragment>  extends Fragment {
     public final   String TAG = getClass().getSimpleName();
     public WeakReferenceHandler weakReferenceHandler;
     public boolean isVisibleToUser;
+    public int pageStart = 0;
 
     private ImageLoadingListener animateFirstListener = new AnimateFirstDisplayListener();
 

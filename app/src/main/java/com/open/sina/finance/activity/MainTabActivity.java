@@ -11,6 +11,7 @@ import android.widget.RadioGroup;
 import android.widget.TabHost;
 
 import com.open.sina.finance.R;
+import com.open.sina.finance.activity.news.NewsTabActivity;
 import com.open.sina.finance.base.activity.BaseTabActivity;
 import com.open.sina.finance.bean.MainTabBean;
 import com.open.sina.finance.utils.ActivityUtils;
@@ -75,7 +76,7 @@ public class MainTabActivity extends BaseTabActivity {
             TabHost.TabSpec tab_main = mTabHost.newTabSpec(mbean.tabName);
             Intent intent = null;
             if (mbean.tabName.equals(getResources().getString(R.string.tab_main_news))) {
-                intent = new Intent(this, GuideActivity.class);
+                intent = new Intent(this, NewsTabActivity.class);
             } else if (mbean.tabName.equals(getResources().getString(R.string.tab_main_market))) {
                 intent = new Intent(this, GuideActivity.class);
             } else if (mbean.tabName.equals(getResources().getString(R.string.tab_main_mystock))) {
